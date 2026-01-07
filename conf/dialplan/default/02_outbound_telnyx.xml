@@ -1,0 +1,77 @@
+<include>
+  <!--
+    Outbound calling via Telnyx Gateway
+    
+    This dialplan handles outbound calls from local extensions (like MicroSIP)
+    and routes them through the Telnyx SIP trunk.
+    
+    Supported formats:
+    - US/Canada 11-digit: 1NXXNXXXXXX (e.g., 19495551234)
+    - US/Canada 10-digit: NXXNXXXXXX (e.g., 9495551234) - auto-prepends +1
+    - International with 011: 011CCXXXXXXXXX (e.g., 011923244902616)
+    - E.164 format: +CCXXXXXXXXX (e.g., +923244902616)
+    - International without prefix: 92XXXXXXXXX (e.g., 923244902616) - auto-prepends +
+  -->
+
+  <!-- US/Canada 11-digit numbers starting with 1 (1NXXNXXXXXX) -->
+  <extension name="outbound_us_can_11digit">
+    <condition field="destination_number" expression="^(1[2-9]\d{9})$">
+      <action application="set" data="effective_caller_id_number=+19495431333"/>
+      <action application="set" data="effective_caller_id_name=FreeSWITCH"/>
+      <action application="set" data="ringback=${us-ring}"/>
+      <action application="bridge" data="{ignore_early_media=false}sofia/gateway/telnyx/+$1"/>
+    </condition>
+  </extension>
+
+  <!-- US/Canada 10-digit numbers (NXXNXXXXXX) - prepend +1 -->
+  <extension name="outbound_us_can_10digit">
+    <condition field="destination_number" expression="^([2-9]\d{9})$">
+      <action application="set" data="effective_caller_id_number=+19495431333"/>
+      <action application="set" data="effective_caller_id_name=FreeSWITCH"/>
+      <action application="set" data="ringback=${us-ring}"/>
+      <action application="bridge" data="{ignore_early_media=false}sofia/gateway/telnyx/+1$1"/>
+    </condition>
+  </extension>
+
+  <!-- International calls starting with 011 (011CCXXXXXXXXX) -->
+  <extension name="outbound_international_011">
+    <condition field="destination_number" expression="^(011\d+)$">
+      <action application="set" data="effective_caller_id_number=+19495431333"/>
+      <action application="set" data="effective_caller_id_name=FreeSWITCH"/>
+      <action application="set" data="ringback=${us-ring}"/>
+      <action application="bridge" data="{ignore_early_media=false}sofia/gateway/telnyx/+${destination_number:3}"/>
+    </condition>
+  </extension>
+
+  <!-- Direct E.164 format (numbers starting with +) -->
+  <extension name="outbound_e164">
+    <condition field="destination_number" expression="^(\+\d+)$">
+      <action application="set" data="effective_caller_id_number=+19495431333"/>
+      <action application="set" data="effective_caller_id_name=FreeSWITCH"/>
+      <action application="set" data="ringback=${us-ring}"/>
+      <action application="bridge" data="{ignore_early_media=false}sofia/gateway/telnyx/$1"/>
+    </condition>
+  </extension>
+
+  <!-- International numbers without prefix (e.g., 923244902616) - prepend + -->
+  <extension name="outbound_international_noprefix">
+    <condition field="destination_number" expression="^(9[0-9]{10,14})$">
+      <action application="set" data="effective_caller_id_number=+19495431333"/>
+      <action application="set" data="effective_caller_id_name=FreeSWITCH"/>
+      <action application="set" data="ringback=${us-ring}"/>
+      <action application="bridge" data="{ignore_early_media=false}sofia/gateway/telnyx/+$1"/>
+    </condition>
+  </extension>
+
+  <!-- Catch-all for other international numbers (3-15 digits, not starting with 1) -->
+  <extension name="outbound_international_catchall">
+    <condition field="destination_number" expression="^([2-9]\d{10,14})$">
+      <action application="set" data="effective_caller_id_number=+19495431333"/>
+      <action application="set" data="effective_caller_id_name=FreeSWITCH"/>
+      <action application="set" data="ringback=${us-ring}"/>
+      <action application="bridge" data="{ignore_early_media=false}sofia/gateway/telnyx/+$1"/>
+    </condition>
+  </extension>
+
+</include>
+
