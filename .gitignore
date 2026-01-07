@@ -1,0 +1,108 @@
+# FreeSWITCH .gitignore
+# Ignore runtime files, logs, and temporary data
+
+# Logs
+log/
+*.log
+
+# Database files
+db/
+
+# Runtime files
+run/
+*.pid
+
+# Recordings
+recordings/
+storage/
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Core dumps
+core
+core.*
+
+# Compiled modules (if any)
+*.o
+*.so
+*.a
+*.la
+*.lo
+
+# Cache
+cache/
+
+# CDR (Call Detail Records) - optional, uncomment if you don't want to track
+# cdr-csv/
+# cdr-pg-csv/
+
+# Voicemail - optional, uncomment if you don't want to track
+# voicemail/
+
+# Sounds (these are large, don't commit)
+sounds/
+
+# Grammar files (large)
+grammar/
+
+# Fonts (if not needed)
+fonts/
+
+# Images (if not needed)
+images/
+
+# Binary files - exclude ALL binaries
+bin/
+
+# Library files
+lib/
+mod/
+
+# Certificates (NEVER commit private keys!)
+certs/*.key
+certs/*.pem
+certs/*.crt
+
+# Include directory (C headers, not needed in config repo)
+include/
+
+# htdocs (web interface, usually not needed)
+htdocs/
+
+# Scripts (if you want to track custom scripts, remove this line)
+# scripts/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Git
+.git/
+
+# Keep only configuration files
+# We want to track:
+# - conf/ directory (all XML configs)
+# - Custom scripts (if any)
+# - Documentation
+
+# Explicitly include important config files (override above rules)
+!conf/**/*.xml
+!conf/**/*.conf
+!conf/**/*.tpl
+!conf/mime.types
+!conf/**/*.ttml
+
+
