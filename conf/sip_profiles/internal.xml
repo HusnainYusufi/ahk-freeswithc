@@ -84,7 +84,7 @@
     <param name="log-auth-failures" value="false"/>
     <param name="forward-unsolicited-mwi-notify" value="false"/>
 
-    <param name="context" value="public"/>
+    <param name="context" value="default"/>
     <param name="rfc2833-pt" value="101"/>
     <!-- port to bind to for sip traffic -->
     <param name="sip-port" value="$${internal_sip_port}"/>
@@ -125,7 +125,7 @@
     -->
     <!--<param name="enable-timer" value="false"/>-->
     <!--<param name="minimum-session-expires" value="120"/>-->
-    <param name="apply-inbound-acl" value="domains"/>
+    <param name="apply-inbound-acl" value="sip_trusted_only"/>
     <!--
         This defines your local network, by default we detect your local network
         and create this localnet.auto ACL for this.
@@ -281,8 +281,8 @@
          auto                  - Use guessed ip.
          auto-nat              - Use ip learned from NAT-PMP or UPNP
     -->
-    <param name="ext-rtp-ip" value="auto-nat"/>
-    <param name="ext-sip-ip" value="auto-nat"/>
+    <param name="ext-rtp-ip" value="157.173.117.207"/>
+    <param name="ext-sip-ip" value="157.173.117.207"/>
 
     <!-- rtp inactivity timeout -->
     <param name="rtp-timeout-sec" value="300"/>

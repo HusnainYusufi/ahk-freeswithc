@@ -1,7 +1,7 @@
 <include>
   <user id="1000">
     <params>
-      <param name="password" value="$${default_password}"/>
+      <param name="password" value="zXNtLrq9BgVeNHJG6lgZX2l9HDwptMkxZ1bFVEqZ6JU="/>
       <param name="vm-password" value="1000"/>
     </params>
     <variables>
