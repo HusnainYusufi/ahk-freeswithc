@@ -3,6 +3,8 @@
     <params>
       <param name="password" value="zXNtLrq9BgVeNHJG6lgZX2l9HDwptMkxZ1bFVEqZ6JU="/>
       <param name="vm-password" value="1000"/>
+      <param name="rtp-enable-zrtp" value="false"/>
+      <param name="media-webrtc" value="true"/>
     </params>
     <variables>
       <variable name="toll_allow" value="domestic,international,local"/>
