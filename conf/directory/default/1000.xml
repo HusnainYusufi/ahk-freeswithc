@@ -3,8 +3,6 @@
     <params>
       <param name="password" value="zXNtLrq9BgVeNHJG6lgZX2l9HDwptMkxZ1bFVEqZ6JU="/>
       <param name="vm-password" value="1000"/>
-      <param name="rtp-enable-zrtp" value="false"/>
-      <param name="media-webrtc" value="true"/>
     </params>
     <variables>
       <variable name="toll_allow" value="domestic,international,local"/>
@@ -15,6 +13,12 @@
       <variable name="outbound_caller_id_name" value="$${outbound_caller_name}"/>
       <variable name="outbound_caller_id_number" value="$${outbound_caller_id}"/>
       <variable name="callgroup" value="techsupport"/>
+      <!-- WebRTC variables -->
+      <variable name="media_webrtc" value="true"/>
+      <variable name="rtp_secure_media" value="true"/>
+      <variable name="rtp_secure_media_inbound" value="true"/>
+      <variable name="rtp_secure_media_outbound" value="true"/>
+      <variable name="sip_secure_media" value="true"/>
     </variables>
   </user>
 </include>

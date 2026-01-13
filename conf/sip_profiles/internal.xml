@@ -312,6 +312,14 @@
     <!-- You need wss.pem in $${certs_dir} for wss or one will be created for you -->
     <param name="wss-binding" value=":7443"/>
 
+    <!-- WebRTC support - required for proper ICE/DTLS negotiation -->
+    <param name="apply-candidate-acl" value="rfc1918.auto"/>
+    <param name="apply-candidate-acl" value="localnet.auto"/>
+    <param name="apply-candidate-acl" value="candidate"/>
+    <param name="inbound-proxy-media" value="false"/>
+    <param name="inbound-late-negotiation" value="true"/>
+    <param name="media-option" value="resume-media-on-hold"/>
+
     <!--<param name="delete-subs-on-register" value="false"/>-->
 
     <!-- launch a new thread to process each new inbound register when using heavier backends -->
