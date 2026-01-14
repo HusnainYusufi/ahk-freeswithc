@@ -30,6 +30,7 @@
     <!-- ESL - Trusted IPs Only -->
     <list name="esl_trusted_only" default="deny">
       <node type="allow" cidr="154.57.194.70/32"/>
+      <node type="allow" cidr="128.94.9.13/32"/>    <!-- New Backend -->
       <node type="allow" cidr="127.0.0.1/32"/>
     </list>
 
@@ -37,6 +38,7 @@
     <list name="sip_trusted_only" default="deny">
       <node type="allow" cidr="154.57.194.70/32"/>  <!-- Backend / VPN egress -->
       <node type="allow" cidr="128.94.15.9/32"/>   <!-- Laptop -->
+      <node type="allow" cidr="128.94.9.13/32"/>   <!-- New Backend -->
       <node type="allow" cidr="127.0.0.1/32"/>     <!-- Localhost -->
       <node type="deny" cidr="185.243.0.0/16"/>    <!-- Block attacker network -->
     </list>
